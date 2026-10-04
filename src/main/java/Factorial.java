@@ -2,15 +2,15 @@ public class Factorial {
 
     public static long calculate(int n) {
         if (n < 0) {
-            throw new IllegalArgumentException("Negative number");
+            throw new IllegalArgumentException("Negative number exception");
         }
 
-        long result = 1;
+        long fact = 1;
 
         for (int i = 2; i <= n; i++) {
-            result *= i;
+            fact *= i;
         }
 
-        return result;
+        return fact;
     }
 }
