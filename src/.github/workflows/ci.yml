@@ -2,24 +2,23 @@ name: Java CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
-    steps:
+    steps:     
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
-          distribution: 'temurin'
+          java-version: "25"
+          distribution: "temurin"
           cache: maven
 
       - name: Run tests
@@ -27,3 +26,9 @@ jobs:
 
       - name: Build
         run: mvn package
+
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: factorial-java
+          path: target/*.jar
